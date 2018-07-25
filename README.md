@@ -1,4 +1,4 @@
-# Log-Analysis Report  by Montasser Ghachem
+# Log-Analysis Report
 The pupose of this project is to create a report in Python about the activity of a fake news site . This news site displays articles that are written by different authors and viewed by visitors of the website. It stores information about its articles, authors and visitors' activity in a database `news`. This database contains three tables: authors, articles and log. The table `authors` stores the name and a short bio of all authors. The table `articles` stores all articles' text displayed on the news website as well as other properties such as creation date and slug. Finally, The table `log` stores details about the different requests directed at the news website namely their landing page and their HTTP status code.
 
 The report aims to answer three questions:
@@ -18,7 +18,20 @@ If you do not have them already installed on your machine, please download them 
 [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 [Download Git Bash](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe)
 
-Once these programs are installed, open Git Bash and create a directory called `Report` in the location of your preferences. Let's assume, for illustration purposes, that you created `Report` under `C:`. Now use Git Bash to access your folder by typing `cd c:\report`
+# Installation and Running
+Once these programs are installed, proceed with the following steps:
+
+- Create a folder called `Report` in the location of your preference. 
+
+- Download [installation.zig](https://www.vagrantup.com/downloads.html) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Once the unzipping is done, make sure that your report folder contains these three files.
+
+- Open Git Bash (if you are a Windows user, otherwise use your default terminal), `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take some minutes. Whent the setup is finalized, type `vagrant ssh` to connect to the virtual machine.
+
+- To load data into the `news` database with data, type `psql -d news -f newsdata.sql`.
+
+- To run the Python code, type `python report.py`
+
+
 
 ```
                          Table authors
