@@ -23,14 +23,35 @@ Once these programs are installed, proceed with the following steps:
 
 - Create a folder called `report` in the location of your preference. For illustration purposes, assume you create a folder report under the root folder 'c:\'. 
 
-- Download [installation.zig](https://www.vagrantup.com/downloads.html) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Once the unzipping is done, make sure that your report folder contains these three files. To check this, `cd` to the report folder and type `ls`.
+- Download [installation.zig](https://github.com/monty-nietzsche/log-analysis-report/raw/master/installation.zip) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Before proceeding, make sure that your report folder contains these three files. To check this, `cd` to the report folder and type `ls`.
 
+_List files in report folder (ls):_ 
+![alt text][screen1]
 
-- Open Git Bash (if you are a Windows user, otherwise use your default terminal), `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take some minutes. Whent the setup is finalized, type `vagrant ssh` to connect to the virtual machine.
+- Open Git Bash (if you are a Windows user, otherwise use your default terminal), `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take some minutes.
+
+_Setup the virtual machine (vagrant.up):_ 
+![alt text][screen2]
+
+- When the setup is finalized, type `vagrant ssh` to connect to the virtual machine. 
+
+_Connect to the virtual machine (vagrant.ssh):_ 
+![alt text][screen3]
+
+- Once connected to the virtual machine, type `cd /vagrant` which brings you to the report folder. 
+
+_`cd` to the report folder (cd /vagrant):_ 
+![alt text][screen4]
 
 - To load data into the `news` database with data, type `psql -d news -f newsdata.sql`.
 
+_load data into the `news`database (psql):_ 
+![alt text][screen5]
+
 - To run the Python code, type `python report.py`
+
+_run the python script `report.py`:_ 
+![alt text][screen6]
 
 
 
@@ -140,3 +161,9 @@ Days in which more than 1 % of requests lead to errors (Top 3):
 
 -------------------- End of Report - Thanks for reviewing! ---------------------
 ```
+[screen1]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen1.jpg "list files in report folder"
+[screen2]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen2.jpg "setup the virtual machine"
+[screen3]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen3.jpg "connect to the virtual machine"
+[screen4]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen4.jpg "`cd` to the report folder"
+[screen5]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen5.jpg "load data into the news database"
+[screen6]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen6.jpg "run the Python script"
