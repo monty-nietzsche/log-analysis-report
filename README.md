@@ -1,10 +1,9 @@
 # Log-Analysis Report
-The pupose of this project is to create a plain-text reporting tool about the user activity and preferences on a newspaper website. The backend database `news` stores information about articles, authors and visitors' activity and contain three tables: authors, articles and log. The table _authors_ stores a name and a short bio of every author. The table _articles_ stores articles' title and body text as well as creation date and slug. Finally, The table _log_ records details about the different requests directed at the newspaper site namely the landing page and requests' HTTP status code.
+The pupose of this project is to create a plain-text reporting tool about the user activity and preferences on a newspaper website. The backend database `news` stores information about articles, authors and visitors' activity and contain three tables: authors, articles and log. The table _authors_ stores a name and a short bio of every author. The table _articles_ stores articles' title and body text as well as creation date and slug. Finally, The table _log_ records details about the different requests directed at the newspaper site namely the landing page and requests' HTTP status code. The structure of the database is as follows:
 
-The structure of the database is as follows:
 ![alt text][diagram]
 
-While _articles.author_ is foreign key in table _articles_ referencing _authors_id_; _log.path_ is not a foreign key. It is, however, closely related to _articles.slug_ since the path to an article having a slug 'bad-things-gone' is `/article/bag-things-gone`. These two relationships between the tables allow us to join them and extract information to answer a wide range of question. The reporting tool we want to construct focuses on answering three questions:
+While _articles.author_ is foreign key in table _articles_ referencing _authors_id_; _log.path_ is not a foreign key. It is, however, closely related to _articles.slug_ since the path to an article having a slug `bad-things-gone` is `/article/bag-things-gone`. These two relationships enable us to combine data cross tables (join operations) and therefore allow answering a fairly large set of questions. However, we want to focus in this project on answering three questions:
 - Which articles are most popular i.e. most viewed?
 - Which authors are most popular?
 - Which days have had an error rate of more than 1%? The error rate is defined as the ratio between erronous requests and total requests. The erronous requests are the requests whose status code is not `200 OK`.
@@ -50,18 +49,18 @@ Once all requirements are met, proceed with the following steps:
 
 ![alt text][screen6]
 
-## Parameters of the program report.py
-To enrich the code, I have included 3 parameters:
-- `TOP`: The number of popular articles that the user would like to show PART 1 of the report. If `TOP=4`, the report show the 4 most popular articles of all time in PART 1. The default value is 3, as asked in the assignment.
-- `THRESHOLD`: This is the error rate threshold. In PART 3, the report will show the days that have an error rate (errors/requests) higher than this threshold. For instance, if `THRESHOLD=2`, then the report will show all days that have an error rate higher than 2%. The default value is `THRESHOLD=1`, as asked in the assignment.
-- `ETOP`: This parameter specify the maximum number of days shown in the report. In case the threshold is very low (take `0.01%` for example), PART 3 might contain a large number of days having an error rate higher than this threshold. `ETOP` limits the number of the days shown in PART 3 of the report. If `THRESHOLD=0.5` and `ETOP=3`, the report shows the top three days with error rates higher than 0.5%. The default value is `ETOP=3`.
+## Structure of the Python script(report.py)
+The script consists of four major parts:
+- Importing psycopg2: `import psycopg2` 
+- Declaring and initializing parameters: `DBNAME, TOP, THRESHOLD, ETOP`
+- Extracting data from the database through 3 functions: [1] `Popular_articles()` [2] `Popular_authors()` [3] `Error_days()`
+- Printing the report: `Print_report()`
 
-## Structure of the code
-The code consists of four parts:
-- Importing of psycopg2: `import psycopg2` 
-- Declaration and initialization of parameters: `DBNAME, TOP, THRESHOLD, ETOP`
-- 3 functions extracting data from the database: [1] `Popular_articles()` [2] `Popular_authors()` [3] `Error_days()`
-- 1 function printing the report: `Print_report()`
+## Parameters of the Python script(report.py)
+
+- `TOP`: The number of popular articles that the user would like to show in the report. If `TOP=4`, the report show the 4 most popular articles of all time. The default value is 3.
+- `THRESHOLD`: This is the error rate threshold. The report shows the days that have an error rate (errors/requests) higher than this threshold. For instance, if `THRESHOLD=2`, then the report will show all days that have an error rate higher than 2%. The default value is `THRESHOLD=1`.
+- `ETOP`: This parameter specify the maximum number of days shown in the report. In case the threshold is very low (take `0.01%` for example), the report might contain a large number of days having an error rate higher than this threshold. `ETOP` limits the number of the days shown in the report. If `THRESHOLD=0.5` and `ETOP=3`, the report shows the top three days with error rates higher than 0.5%. The default value is `ETOP=3`.
 
 ## Data functions
 - `Popular_articles (TOP)`
@@ -113,7 +112,7 @@ The code consists of four parts:
   ``` 
   The number of requests per day is obtained from the table _log_ by grouping entries per day. The number of errors per day is the number of requests where `status!=2xx`. For each single day, dividing _errors_ by _requests_ gives the daily error rate `error_rate`. The days are then sorted by decreasing error rates. Finally, the first `ETOP` days with `rate>THRESHOLD` are selected and returned by the function.
 
-# Report preview
+## Report preview
 ```text
 --------------------------------------- ----------------------------------------
 ------------------- Log Analysis Report By Montasser Ghachem -------------------
@@ -133,12 +132,12 @@ The most popular article authors of all time:
  + Markoff Chaney - 84557 views
 
 
-Days in which more than 1 % of requests lead to errors (Top 3):
- + Jul 17, 2016 - 2.3%  errors
-    |- 1265 out of 55907 requests lead to errors.
+Days with 1 % or more failed requests:
+ + Jul 17, 2016 - 2.3%  errs
+  (1265 out of 55907 requests failed)
 
 
--------------------- End of Report - Thanks for reviewing! ---------------------
+--------------------------------- End of Report---------------------------------
 ```
 [diagram]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/diagram.jpg "database diagram"
 [screen1]:https://raw.githubusercontent.com/monty-nietzsche/log-analysis-report/master/screen1.jpg "list files in report folder"
