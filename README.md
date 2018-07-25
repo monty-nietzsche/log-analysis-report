@@ -13,42 +13,40 @@ Before running the code, please make sure that the following programs are instal
 - Vagrant
 - VirtualBox
 - Git Bash
+
 If you do not have them already installed on your machine, please download them here: 
-[Download Vagrant](https://www.vagrantup.com/downloads.html)
-[Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-[Download Git Bash](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe)
+
+[Download Vagrant](https://www.vagrantup.com/downloads.html) | [Download VirtualBox](https://www.virtualbox.org/wiki/Downloads) | [Download Git Bash](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe)
 
 # Installation and Running
-Once these programs are installed, proceed with the following steps:
+Once all requirements are met, proceed with the following steps:
 
-- Create a folder called `report` in the location of your preference. For illustration purposes, assume you create a folder report under the root folder 'c:\'. 
+1. _Create report folder_ : Create a folder called `report` in the location of your preference. For illustration purposes, assume you create a folder report under the root folder 'c:\'. 
 
-- Download [installation.zig](https://github.com/monty-nietzsche/log-analysis-report/raw/master/installation.zip) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Before proceeding, make sure that your report folder contains these three files. To check this, `cd` to the report folder and type `ls`.
+2. _Download installation files_ : Download [installation.zip](https://github.com/monty-nietzsche/log-analysis-report/raw/master/installation.zip) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Before proceeding, make sure that your report folder contains these three files. To check this, `cd` to the report folder and type `ls`.
 
-_List files in report folder (ls):_ 
 ![alt text][screen1]
 
-- Open Git Bash (if you are a Windows user, otherwise use your default terminal), `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take some minutes.
+3. _Setup virtual machine_: On Git Bash (if you are a Windows user) or your default terminal, `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take few minutes.
 
-_Setup the virtual machine (vagrant.up):_ 
 ![alt text][screen2]
 
-- When the setup is finalized, type `vagrant ssh` to connect to the virtual machine. 
+4. _Connect to the virtual machine_ : Type `vagrant ssh` to connect to the virtual machine. 
 
 _Connect to the virtual machine (vagrant.ssh):_ 
 ![alt text][screen3]
 
-- Once connected to the virtual machine, type `cd /vagrant` which brings you to the report folder. 
+5. _Access report folder_ : Type `cd /vagrant` which brings you to the report folder. 
 
 _`cd` to the report folder (cd /vagrant):_ 
 ![alt text][screen4]
 
-- To load data into the `news` database with data, type `psql -d news -f newsdata.sql`.
+6. _Load data into database_: Type `psql -d news -f newsdata.sql`.
 
 _load data into the `news`database (psql):_ 
 ![alt text][screen5]
 
-- To run the Python code, type `python report.py`
+7. _Run Python script_: Type `python report.py`
 
 _run the python script `report.py`:_ 
 ![alt text][screen6]
