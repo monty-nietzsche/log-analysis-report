@@ -1,8 +1,24 @@
 # Log-Analysis Report  by Montasser Ghachem
-The pupose of this project is to create a report about the activity of a fake news site in Python. The Python  script, using `psycopg2`, queries a mock PostgreSQL database and collects the information. The news database is named `news` and contains three tables (authors, articles and log). The table `authors` keeps track of the different authors writing on the news website by storing their names and a short bio. The table `articles` stores all articles that are displayed on the news website as well as different other properties such creation date and slug. The table `log` stores details about the different requests directed at the news website namely their landing page and their HTTP status code. Using the data stored in these tables, we will aim to answer three questions:
+The pupose of this project is to create a report in Python about the activity of a fake news site . This news site displays articles that are written by different authors and viewed by visitors of the website. It stores information about its articles, authors and visitors' activity in a database `news`. This database contains three tables: authors, articles and log. The table `authors` stores the name and a short bio of all authors. The table `articles` stores all articles' text displayed on the news website as well as other properties such as creation date and slug. Finally, The table `log` stores details about the different requests directed at the news website namely their landing page and their HTTP status code.
+
+The report aims to answer three questions:
 - Which articles are most popular i.e. most viewed?
 - Which authors are most popular?
 - Which days have had an error rate of more than 1%? The error rate is defined as the ratio between erronous requests and total requests. The erronous requests are the requests whose status code is not `200 OK`.
+
+To achieve this, the Python  script (`report.py`) uses `psycopg2`to query a mock PostgreSQL database and collects the information relevant to the questions above.
+
+# Requirements
+Before running the code, please make sure that the following programs are installed on your machine:
+- Vagrant
+- VirtualBox
+- Git Bash
+If you do not have them already installed on your machine, please download them here: 
+[Download Vagrant](https://www.vagrantup.com/downloads.html)
+[Download VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+[Download Git Bash](https://github.com/git-for-windows/git/releases/download/v2.13.3.windows.1/Git-2.13.3-64-bit.exe)
+
+Once these programs are installed, open Git Bash and create a directory called `Report` in the location of your preferences. Let's assume, for illustration purposes, that you created `Report` under `C:`. Now use Git Bash to access your folder by typing `cd c:\report`
 
 ```
                          Table authors
