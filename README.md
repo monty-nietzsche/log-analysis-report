@@ -1,5 +1,5 @@
 # Log-Analysis Report
-The pupose of this project is to create a plain-text reporting tool about the user activity and preferences on a newspaper website. The backend database `news` stores information about articles, authors and visitors' activity and contain three tables: authors, articles and log. The table _authors_ stores a name and a short bio of every author. The table _articles_ stores articles' title and body text as well as creation date and slug. Finally, The table _log_ records details about the different requests directed at the newspaper site namely the landing page and requests' HTTP status code. The structure of the database is as follows:
+The pupose of this project is to create a plain-text reporting tool about the user activity and preferences on a newspaper website. The backend database `news` stores information about articles, authors and site visitors' activity in three tables: _authors_, _articles_ and _log_. The table _authors_ stores a name and a short bio of every author. The table _articles_ stores articles' title and body text as well as creation date and slug. Finally, The table _log_ records details about the different requests directed at the newspaper site namely the landing page and requests' HTTP status code. The structure of the database is as follows:
 
 ![alt text][diagram]
 
