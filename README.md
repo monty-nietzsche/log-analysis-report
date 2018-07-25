@@ -33,22 +33,18 @@ Once all requirements are met, proceed with the following steps:
 
 4. _Connect to the virtual machine_ : Type `vagrant ssh` to connect to the virtual machine. 
 
-_Connect to the virtual machine (vagrant.ssh):_ 
 ![alt text][screen3]
 
 5. _Access report folder_ : Type `cd /vagrant` which brings you to the report folder. 
 
-_`cd` to the report folder (cd /vagrant):_ 
 ![alt text][screen4]
 
 6. _Load data into database_: Type `psql -d news -f newsdata.sql`.
 
-_load data into the `news`database (psql):_ 
 ![alt text][screen5]
 
 7. _Run Python script_: Type `python report.py`
 
-_run the python script `report.py`:_ 
 ![alt text][screen6]
 
 
