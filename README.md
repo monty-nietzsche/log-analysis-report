@@ -21,9 +21,10 @@ If you do not have them already installed on your machine, please download them 
 # Installation and Running
 Once these programs are installed, proceed with the following steps:
 
-- Create a folder called `Report` in the location of your preference. 
+- Create a folder called `report` in the location of your preference. For illustration purposes, assume you create a folder report under the root folder 'c:\'. 
 
-- Download [installation.zig](https://www.vagrantup.com/downloads.html) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Once the unzipping is done, make sure that your report folder contains these three files.
+- Download [installation.zig](https://www.vagrantup.com/downloads.html) and unzip its contents in the report folder. The `installation.zip` contains three files `Vagrantfile`,`newsdata.sql` and `report.py`. Once the unzipping is done, make sure that your report folder contains these three files. To check this, `cd` to the report folder and type `ls`.
+
 
 - Open Git Bash (if you are a Windows user, otherwise use your default terminal), `cd` to the report folder and type `vagrant up`. Wait until the virtual machine is set up, it can take some minutes. Whent the setup is finalized, type `vagrant ssh` to connect to the virtual machine.
 
